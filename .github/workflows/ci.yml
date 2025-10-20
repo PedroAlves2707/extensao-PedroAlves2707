@@ -29,9 +29,7 @@ jobs:
         run: npm run build
 
       - name: Testes E2E
-        run: |
-          echo "Iniciando testes E2E..."
-          npm run test:e2e || npm run test:e2e -- --reporter=html
+        run: npx playwright test --reporter=list,html
 
       - name: Publicar relatório do Playwright
         if: always()
@@ -41,7 +39,7 @@ jobs:
           path: playwright-report
 
       - name: Publicar pacote da extensão
-        if: success()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: extension-zip
