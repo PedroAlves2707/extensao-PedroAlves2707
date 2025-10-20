@@ -1,3 +1,4 @@
+Set-Content -Path src\content\content.js -Value @"
 // src/content/content.js
 
 console.log("Pomodoro CRVG ativo!");
@@ -25,3 +26,4 @@ document.body.setAttribute('data-pomodoro-extension-loaded', 'true');
 
 // Chama a função (opcional)
 initPomodoroBanner();
+"@
