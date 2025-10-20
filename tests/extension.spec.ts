@@ -1,13 +1,13 @@
 // tests/extension.spec.ts
 
 import path from "path";
-import { fileURLToPath } from "url"; // <-- 1. IMPORTAÇÃO NECESSÁRIA
+import { fileURLToPath } from "url"; // CORREÇÃO 1
 import { chromium, test, expect } from "@playwright/test";
 
-// --- 👇 2. ADICIONE ESTAS LINHAS PARA CRIAR O __dirname ---
+// --- CORREÇÃO 1: Definindo o __dirname ---
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// --- 👆 ---
+// ---
 
 const pathToExtension = path.resolve(__dirname, "..", "dist");
 
@@ -16,8 +16,9 @@ test("Extensão carrega content script na página", async () => {
 
   const context = await chromium.launchPersistentContext("", {
     
-    // 3. MANTENHA A CORREÇÃO DO HEADLESS
+    // --- CORREÇÃO 2: 'headless' dinâmico ---
     headless: !!process.env.CI, 
+    // ---
     
     args: [
       `--disable-extensions-except=${pathToExtension}`,
@@ -45,11 +46,9 @@ test("Extensão carrega content script na página", async () => {
 
   console.log("Resultado final do atributo:", loaded);
 
-  // Aqui o Playwright às vezes retorna null em vez de undefined,
-  // então aceitamos qualquer um diferente de "true" como falha.
   if (loaded !== "true") {
     const html = await page.content();
-    console.log("DEBUG HTML:", html.slice(0, 500)); // imprime parte da página
+    console.log("DEBUG HTML:", html.slice(0, 500)); 
     throw new Error("❌ Content script não foi injetado ou demorou demais.");
   }
 
