@@ -1,10 +1,10 @@
 // tests/extension.spec.ts
 
 import path from "path";
-import { fileURLToPath } from "url"; // CORREÇÃO 1
+import { fileURLToPath } from "url"; 
 import { chromium, test, expect } from "@playwright/test";
 
-// --- CORREÇÃO 1: Definindo o __dirname ---
+// --- Garante que o __dirname existe ---
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // ---
@@ -15,11 +15,11 @@ test("Extensão carrega content script na página", async () => {
   console.log("🚀 Iniciando teste do content script...");
 
   const context = await chromium.launchPersistentContext("", {
-    
-    // --- CORREÇÃO 2: 'headless' dinâmico ---
+
+    // --- A CORREÇÃO MAIS IMPORTANTE ---
     headless: !!process.env.CI, 
     // ---
-    
+
     args: [
       `--disable-extensions-except=${pathToExtension}`,
       `--load-extension=${pathToExtension}`,
@@ -31,7 +31,6 @@ test("Extensão carrega content script na página", async () => {
 
   console.log("⏳ Aguardando content script injetar atributo...");
 
-  // Espera até o content script realmente modificar o DOM
   let loaded = null;
   for (let i = 0; i < 15; i++) {
     loaded = await page.evaluate(() => {
