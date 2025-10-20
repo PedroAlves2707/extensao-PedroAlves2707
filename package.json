@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "bootcamp2-chrome-ext-pedroalves2707-main",
+  "version": "1.0.0",
+  "description": "Uma extensão de navegador simples e elegante para ajudar a gerenciar seu tempo com a técnica Pomodoro.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build-extension.mjs",
+    "test:e2e": "playwright test --reporter=list,html",
+    "test": "npm run build && npm run test:e2e",
+    "ci": "npm ci && npm run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.46.0",
+    "archiver": "^7.0.0"
+  }
+}

@@ -1,0 +1,112 @@
+/* Reset básico e estilo geral do corpo da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a2e; /* Fundo escuro azulado */
+    color: #e0e0e0; /* Cor de texto clara */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Contêiner principal do Pomodoro */
+.pomodoro-container {
+    background-color: #1f1f38; /* Um pouco mais claro que o fundo */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #7f5af0; /* Cor de destaque roxa */
+    margin-bottom: 20px;
+}
+
+/* Estilo do display do tempo */
+#timer-display {
+    font-size: 6rem;
+    font-weight: 600;
+    color: #fffffe; /* Branco puro para destaque */
+    margin-bottom: 30px;
+}
+
+/* Contêiner para os botões */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaço entre os botões */
+}
+
+/* Estilo geral dos botões */
+.button-container button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fffffe;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.button-container button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px); /* Efeito de levantar ao passar o mouse */
+}
+
+/* Cores específicas para cada botão */
+#start-btn {
+    background-color: #2cb67d; /* Verde */
+}
+
+#pause-btn {
+    background-color: #ff9a00; /* Laranja */
+}
+
+#reset-btn {
+    background-color: #e53e3e; /* Vermelho */
+}
+
+/* Contêiner para os links de download */
+.links-container {
+    text-align: center;
+}
+
+.links-container h3 {
+    font-size: 1.2rem;
+    color: #7f5af0;
+    margin-bottom: 15px;
+}
+
+.links-container ul {
+    list-style: none;
+}
+
+.links-container li {
+    margin-bottom: 10px;
+}
+
+.links-container a {
+    color: #a7a9be;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.links-container a:hover {
+    color: #fffffe;
+    text-decoration: underline;
+}
