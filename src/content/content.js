@@ -21,7 +21,7 @@ function initPomodoroBanner() {
   document.body.appendChild(banner);
 }
 
-// Marca que o content script foi carregado (para o teste reconhecer)
+// Linha mais importante: Marca que o content script foi carregado (para o teste reconhecer)
 document.body.setAttribute('data-pomodoro-extension-loaded', 'true');
 
 // Chama a função (opcional)
